@@ -1,0 +1,16 @@
+name: my-own-wokflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      #клонируем репозиторий
+    - uses: actions/checkout@v4
+    # устанавливаем node.js
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+        cache: 'npm'
+    - run: make setup
+    - run: make test
+    - run: make lint
